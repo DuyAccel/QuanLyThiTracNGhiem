@@ -1,3 +1,0 @@
-thông tin các class:
-inteface:
-  -DuyetDS
