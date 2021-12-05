@@ -13,6 +13,7 @@ public class DSGiamThi implements DuyetDS, File{
         int MaSo;
         String HocVi;
         String NgaySinh;
+        boolean GioiTinh;
         Scanner scan = new Scanner(System.in);
         do{   
             System.out.print("Nhap Ma So Danh Sach: ");
@@ -40,7 +41,9 @@ public class DSGiamThi implements DuyetDS, File{
             System.out.print("Nhap Ngay sinh: ");
             NgaySinh = scan.nextLine();
 
-            gt[i] = new GiamThi(Ten, MaSo, HocVi, NgaySinh);
+            System.out.print("Nhap Gioi Tinh: ");
+            GioiTinh = Boolean.parseBoolean(scan.nextLine());
+            gt[i] = new GiamThi(Ten, MaSo, HocVi, NgaySinh, GioiTinh);
         }
     }
     @Override
@@ -53,6 +56,7 @@ public class DSGiamThi implements DuyetDS, File{
             System.out.println("Ma So: " + gt[i].getMaSo());
             System.out.println("Lop: " + gt[i].getHocVi());
             System.out.println("Ngay Sinh: " + gt[i].getNgaySinh());
+            System.out.println("Gioi Tinh: " + gt[i].getStringGioiTinh());
         }
     }
     @Override
@@ -128,7 +132,7 @@ public class DSGiamThi implements DuyetDS, File{
             n++;
             gt = Arrays.copyOf(gt, n);
             String []data = line.split(";");
-            gt[n-1] = new GiamThi(data[0], Integer.parseInt(data[1]), data[2], data[3]);
+            gt[n-1] = new GiamThi(data[0], Integer.parseInt(data[1]), data[2], data[3], Boolean.parseBoolean(data[4]));
         }
         buffer.close();
         file.close();
@@ -145,11 +149,11 @@ public class DSGiamThi implements DuyetDS, File{
             buffer.newLine();
             buffer.write("So luong Giam Thi: " + n);
             buffer.newLine();
-            buffer.write("Ma so:\t\tTen:\t\t\t\t\tHocVi:\t\tNgay Sinh:");
+            buffer.write("Ma so:\t\tTen:\t\t\t\t\tHocVi:\t\tNgay Sinh:\t\tGioiTinh:");
             buffer.newLine();
             for (GiamThi s : gt) {
                 buffer.write(s.getMaSo()+ "\t\t\t" +s.getTen() + "\t\t\t\t\t" 
-                            + s.getHocVi() + "\t\t\t" + s.getNgaySinh());
+                            + s.getHocVi() + "\t\t\t" + s.getNgaySinh() + "\t\t" + s.getStringGioiTinh());
                 buffer.newLine();
             }
             buffer.close();

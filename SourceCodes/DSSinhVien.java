@@ -14,6 +14,7 @@ public class DSSinhVien implements DuyetDS, File{
         String Lop;
         boolean CamThi;
         String NgaySinh;
+        boolean GioiTinh;
         Scanner scan = new Scanner(System.in);
         do{   
             System.out.print("Nhap Ma So Danh Sach: ");
@@ -41,10 +42,13 @@ public class DSSinhVien implements DuyetDS, File{
             System.out.print("Nhap Ngay sinh: ");
             NgaySinh = scan.nextLine();
 
+            System.out.print("Nhap Gioi Tinh (Nam -> true / Nu -> false): ");
+            GioiTinh = Boolean.parseBoolean(scan.nextLine());
+
             System.out.print("Nhap trang thai CamThi: ");
-            CamThi = scan.nextBoolean();
+            CamThi = Boolean.parseBoolean(scan.nextLine());
             
-            sv[i] = new SinhVien(Ten, MaSo, Lop, NgaySinh, CamThi);
+            sv[i] = new SinhVien(Ten, MaSo, Lop, NgaySinh, GioiTinh, CamThi);
         }
     }
     @Override
@@ -57,12 +61,8 @@ public class DSSinhVien implements DuyetDS, File{
             System.out.println("Ma So: " + sv[i].getMaSo());
             System.out.println("Lop: " + sv[i].getLop());
             System.out.println("Ngay Sinh: " + sv[i].getNgaySinh());
-            if (sv[i].getCamthi()){
-                System.out.println("Sinh Vien bi cam thi!");
-            }
-            else{
-                System.out.println("Sinh vien KHONG bi cam thi");
-            }
+            System.out.println("Gioi Tinh: " + sv[i].getStringGioiTinh());
+            System.out.println("Cam thi: " + sv[i].getStringCamThi());
         }
     }
     @Override
@@ -138,7 +138,8 @@ public class DSSinhVien implements DuyetDS, File{
             n++;
             sv = Arrays.copyOf(sv, n);
             String []data = line.split(";");
-            sv[n-1] = new SinhVien(data[0], Integer.parseInt(data[1]), data[2], data[3], Boolean.parseBoolean(data[4]));
+            sv[n-1] = new SinhVien(data[0], Integer.parseInt(data[1]), data[2], data[3],
+                                     Boolean.parseBoolean(data[4]), Boolean.parseBoolean(data[5]));
         }
         buffer.close();
         file.close();
@@ -155,11 +156,11 @@ public class DSSinhVien implements DuyetDS, File{
             buffer.newLine();
             buffer.write("So luong sinh vien: " + n);
             buffer.newLine();
-            buffer.write("Ma so:\t\tTen:\t\t\t\t\tLop:\t\tNgay Sinh:\t\tCam Thi:");
+            buffer.write("Ma so:\t\tTen:\t\t\t\t\tLop:\t\tNgay Sinh:\t\tGioi Tinh\t\tCam Thi:");
             buffer.newLine();
             for (SinhVien s : sv) {
                 buffer.write(s.getMaSo()+ "\t\t\t" +s.getTen() + "\t\t\t\t\t" + s.getLop() + "\t\t\t"
-                            + s.getNgaySinh() + "\t\t" + s.getCamthi());
+                            + s.getNgaySinh() + "\t\t" + s.getStringGioiTinh() + "\t\t" + s.getStringCamThi());
                 buffer.newLine();
             }
             buffer.close();

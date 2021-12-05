@@ -3,8 +3,8 @@ public class SinhVien extends ConNguoi{
     private String Lop;
     private boolean CamThi;
     SinhVien(){}
-    SinhVien(String Ten, int MaSo, String Lop, String NgaySinh, boolean CamThi){
-        super(Ten, MaSo, NgaySinh);
+    SinhVien(String Ten, int MaSo, String Lop, String NgaySinh, boolean GioiTinh, boolean CamThi){
+        super(Ten, MaSo, NgaySinh, GioiTinh);
         this.Lop = Lop;
         this.CamThi = CamThi;
     }
@@ -14,13 +14,18 @@ public class SinhVien extends ConNguoi{
     public boolean getCamthi() {
         return CamThi;
     }
+    public String getStringCamThi(){
+        if (CamThi)
+            return "Co";
+        return "Khong";
+    }
     @Override
     public void capNhat() {
         Scanner scan = new Scanner(System.in);
         int n;
         do{
             System.out.println("Chon muc can chinh sua:");
-            System.out.println("1. Ten\n2. Maso\n3. Lop\n4. NgaySinh\n5. CamThi\n6. Thoat");
+            System.out.println("1. Ten\n2. Maso\n3. Lop\n4. NgaySinh\n5. CamThi\n6. Gioi Tinh\n7. Thoat");
             System.out.print("Chon: ");
             n = scan.nextInt();
             switch (n){
@@ -43,10 +48,15 @@ public class SinhVien extends ConNguoi{
                     NgaySinh = new ThoiGian(scan.nextLine());
                     break;
                 case 5:
+                    System.out.print("Nhap Gioi Tinh moi: ");
+                    GioiTinh = Boolean.parseBoolean(scan.nextLine());
+                case 6:
                     System.out.print("Nhap trang thai CamThi moi: ");
-                    CamThi = scan.nextBoolean();
+                    CamThi = Boolean.parseBoolean(scan.nextLine());
                     break;
+                default:
+                    System.out.print("Lua chon khong hop le!");
             }
-        }while (n!= 6);
+        }while (n!= 7);
     }
 }

@@ -2,8 +2,8 @@ import java.util.Scanner;
 public class GiamThi extends ConNguoi{
     private String HocVi;
     GiamThi(){}
-    GiamThi(String Ten, int MaSo, String  Hocvi, String NgaySinh){
-        super(Ten, MaSo, NgaySinh);
+    GiamThi(String Ten, int MaSo, String  Hocvi, String NgaySinh, boolean GioiTinh){
+        super(Ten, MaSo, NgaySinh, GioiTinh);
         this.HocVi = Hocvi;
     }
     public String getHocVi() {
@@ -15,7 +15,7 @@ public class GiamThi extends ConNguoi{
         int n;
         do{
             System.out.println("Chon muc can chinh sua:");
-            System.out.println("1. Ten\n2. Maso\n3. HocVi\n4. NgaySinh\n5. Thoat");
+            System.out.println("1. Ten\n2. Maso\n3. HocVi\n4. NgaySinh\n5. Gioi Tinh\n6. Thoat");
             System.out.print("Chon: ");
             n = scan.nextInt();
             switch (n){
@@ -37,7 +37,13 @@ public class GiamThi extends ConNguoi{
                     System.out.print("Nhap Ngay sinh moi: ");
                     NgaySinh = new ThoiGian(scan.nextLine());
                     break;
+                case 5:
+                    System.out.print("Nhap Gioi tinh moi: ");
+                    GioiTinh = Boolean.parseBoolean(scan.nextLine());
+                    break;
+                default:
+                    System.out.print("Lua chon khong hop le!");
             }
-        }while (n!= 5);   
+        }while (n!= 6);   
     }
 }
