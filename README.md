@@ -1,8 +1,8 @@
 # Quản Lý Thi Trắc Nghiệm
 Đồ án môn Lập trình Hướng Đối Tượng - JAVA
 
-các chức năng của chương trình:\n
-***Quản Lý**
+các chức năng của chương trình:
+Quản lý:
   -Đọc danh sách các Sinh Viên, Giám thị từ file .inp
   -Xuất danh sách các Sinh Viên, Giám thị ra file .out
   -Sắp xếp danh sách Sinh viên, Giám thị theo Mã số
