@@ -3,7 +3,7 @@
 
 các chức năng của chương trình:
 
-Quản lý:
+**Quản lý:**
 
   -Đọc danh sách các Sinh Viên, Giám thị từ file .inp
   
