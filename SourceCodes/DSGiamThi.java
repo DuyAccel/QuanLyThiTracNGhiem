@@ -153,7 +153,7 @@ public class DSGiamThi implements DuyetDS, File{
             buffer.newLine();
             for (GiamThi s : gt) {
                 buffer.write(s.getMaSo()+ "\t\t\t" +s.getTen() + "\t\t\t\t\t" 
-                            + s.getHocVi() + "\t\t\t" + s.getNgaySinh() + "\t\t" + s.getStringGioiTinh());
+                            + s.getHocVi() + "\t\t\t" + s.getNgaySinh() + "\t\t\t" + s.getStringGioiTinh());
                 buffer.newLine();
             }
             buffer.close();

@@ -160,7 +160,7 @@ public class DSSinhVien implements DuyetDS, File{
             buffer.newLine();
             for (SinhVien s : sv) {
                 buffer.write(s.getMaSo()+ "\t\t\t" +s.getTen() + "\t\t\t\t\t" + s.getLop() + "\t\t\t"
-                            + s.getNgaySinh() + "\t\t" + s.getStringGioiTinh() + "\t\t" + s.getStringCamThi());
+                            + s.getNgaySinh() + "\t\t" + s.getStringGioiTinh() + "\t\t\t" + s.getStringCamThi());
                 buffer.newLine();
             }
             buffer.close();
