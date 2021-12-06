@@ -7,7 +7,7 @@ các chức năng của chương trình:
 
   -Đọc danh sách các Sinh Viên, Giám thị từ màn hình Console hoặc từ file .inp
   
-  -Xuất danh sách các Sinh Viên, Giám thị ra màn hình Console hoắc ra file .out
+  -Xuất danh sách các Sinh Viên, Giám thị ra màn hình Console hoặc ra file .out
   
   -Sắp xếp danh sách Sinh viên, Giám thị theo Mã số
   
