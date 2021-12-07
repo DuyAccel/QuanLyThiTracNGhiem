@@ -116,9 +116,10 @@ public class DSGiamThi implements DuyetDS, File{
         tmp = null;
     }
     @Override
-    public void docFile() {
+    public void docFile() {}
+    public void docFile(String FileName) {
     try {
-        FileReader file = new FileReader("DSGT.inp");
+        FileReader file = new FileReader(FileName);
         BufferedReader buffer = new BufferedReader(file);
         n = 0;
         gt = new GiamThi[1];
@@ -141,9 +142,10 @@ public class DSGiamThi implements DuyetDS, File{
     }
     }
     @Override
-    public void ghiFile() {
+    public void ghiFile(){}
+    public void ghiFile(String Filename) {
         try {
-            FileWriter file = new FileWriter("DSGT.out");
+            FileWriter file = new FileWriter(Filename);
             BufferedWriter buffer = new BufferedWriter(file);
             buffer.write("Ma so danh sach: " + MaSoDS);
             buffer.newLine();

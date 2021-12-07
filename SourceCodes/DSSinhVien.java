@@ -122,9 +122,10 @@ public class DSSinhVien implements DuyetDS, File{
         tmp = null;
     }
     @Override
-    public void docFile() {
+    public void docFile(){}
+    public void docFile(String FileName) {
     try {
-        FileReader file = new FileReader("DSSV.inp");
+        FileReader file = new FileReader(FileName);
         BufferedReader buffer = new BufferedReader(file);
         n = 0;
         sv = new SinhVien[1];
@@ -148,9 +149,11 @@ public class DSSinhVien implements DuyetDS, File{
     }
     }
     @Override
-    public void ghiFile() {
+    public void ghiFile(){}
+    
+    public void ghiFile(String filename) {
         try {
-            FileWriter file = new FileWriter("DSSV.out");
+            FileWriter file = new FileWriter(filename);
             BufferedWriter buffer = new BufferedWriter(file);
             buffer.write("Ma so danh sach: " + MaSoDS);
             buffer.newLine();
