@@ -149,7 +149,7 @@ public class DSGiamThi implements DuyetDS, File{
             buffer.newLine();
             buffer.write("So luong Giam Thi: " + n);
             buffer.newLine();
-            buffer.write("Ma so:\t\tTen:\t\t\t\t\tHocVi:\t\tNgay Sinh:\t\tGioiTinh:");
+            
             buffer.newLine();
             for (GiamThi s : gt) {
                 buffer.write(s.getMaSo()+ "\t\t\t" +s.getTen() + "\t\t\t\t\t" 

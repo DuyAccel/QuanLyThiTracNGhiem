@@ -156,7 +156,7 @@ public class DSSinhVien implements DuyetDS, File{
             buffer.newLine();
             buffer.write("So luong sinh vien: " + n);
             buffer.newLine();
-            buffer.write("Ma so:\t\tTen:\t\t\t\t\tLop:\t\tNgay Sinh:\t\tGioi Tinh\t\tCam Thi:");
+            
             buffer.newLine();
             for (SinhVien s : sv) {
                 buffer.write(s.getMaSo()+ "\t\t\t" +s.getTen() + "\t\t\t\t\t" + s.getLop() + "\t\t\t"
