@@ -103,7 +103,7 @@ public class DSSinhVien implements DuyetDS, File{
     }
     public int timKiem(String Ten){
         for (int i = 0; i < n; i++){
-            if (sv[i].getTen() == Ten)
+            if ((sv[i].getTen()).equalsIgnoreCase(Ten))
                 return i;
         }
         return -1;

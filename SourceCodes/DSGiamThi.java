@@ -97,7 +97,7 @@ public class DSGiamThi implements DuyetDS, File{
     }
     public int timKiem(String Ten){
         for (int i = 0; i < n; i++){
-            if (gt[i].getTen() == Ten)
+            if ((gt[i].getTen()).equalsIgnoreCase(Ten))
                 return i;
         }
         return -1;
