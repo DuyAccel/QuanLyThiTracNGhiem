@@ -1,0 +1,4 @@
+1199
+Tra;9;DCT1208;19/10/2002;false;true
+Cuong;8;DCT1204;22/3/2001;true;false
+Thao;10;DCT1205;28/6/2002;false;true

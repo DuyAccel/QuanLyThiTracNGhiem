@@ -1,0 +1,4 @@
+2993
+Linh;10;DCT1203;13/2/2002;false;true
+Nghia;7;DCT1208;9/5/2002;true;false
+Viet;9;DCT1206;1/1/2002;true;false

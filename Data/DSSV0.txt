@@ -1,0 +1,4 @@
+5435
+Tin;9;DCT1204;24/6/2002;true;false
+Hung;8;DCT1206;2/3/2002;true;false
+Nhu;10;DCT1201;26/9/2002;false;true
