@@ -1,0 +1,14 @@
+861501;co so du lieu;4;60
+861511;lap trinh java;4;60
+854021;ky thuat lap trinh;3;60
+854010;My thuat ung dung cong nghe thong tin;2;60
+861304;luat phap trong cong nghe thong tin;2;60
+861303;Nghien cuu khoa hoc;2;60
+864802;He dieu hanh;4;60
+861344;Lap trinh huong doi tuong;4;60
+864803;Cau truc du lieu va giai thuat;4;60
+863202;Mang may tinh;3;60
+862503;lap trinh web nang cao;4;60
+861405;Ngon ngu pyton;4;60
+861313;Phan tich HTTT;3;60
+861903;Ma nguon mo;3;60

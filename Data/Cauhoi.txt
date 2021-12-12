@@ -1,0 +1,120 @@
+Dau la cau sai ve ngon ngu java?
+Ngon ngu java co phan biet chu hoa-chu thuong
+Java la ngon ngu lap trinh huong doi tuong 
+Dau cham phay duoc su dung de ket thuc lenh trong java
+Chuong trinh viet bang java chi co the chay tren he dieu hanh win
+A
+Dau khong phai la mot kieu du lieu nguyen thuy trong java
+Double
+Int
+Long
+Long float
+B
+Trong sau lenh sau: public static void main(string[]agrs) thi phan tu agr[0] chua gia tri gi?
+Ten cua chuowng trinh
+So luong tham so
+Tham so dau tien cua danh sach tham so
+Khong cau nao dung
+D
+Phuong thuc next() cua lop Scanner dung de lam gi?
+Nhap mot so nguyen 
+Nhap mot ky tu 
+Nhap mot chuoi
+Khong co phuong thuc nay
+A
+Muon chay duoc chuong trinh java, chi can cai phan men nao sau day?
+Netbeans
+Eclipse
+JDK
+Java Platform
+A
+Goi nao trong java chua lop Scanner dung de nhap du lieu tu ban phim?
+Java.net
+Java.io
+Java.util
+Java.awt
+C
+Phuong thuc nextLine() thuoc lop nao?
+String
+Scanner
+Integer
+System
+B
+Ten dau tien cua java la gi?
+Java
+Oak
+Cafe
+James golings
+A
+Dau khong phai la thanh phan trong cau truc cua lop trong java
+Ten lop
+Thuoc tinh
+Phuong thuc 
+Bien
+C
+Ham tao duoc su dung de huy doi tuong?
+Ca hai cau deu dung
+Ca hai cau deu sai
+Cau 1 dung, cau 2 sai
+Cau 2 dung, cau 1 sai
+A
+Doi tuong la gi?
+Cac lop duoc tao the hien tu do
+Mot the hien cua lop
+Mot tham chieu den mot buoc tinh
+Mot bien
+A
+Voi gia tri nao cua x;bieu thuc sau tra ve gia tri true(x thuoc kieu int ). x%3==0
+2
+7
+4
+9
+D
+Kieu du lieu nao trong java chua gia tri bao gom ca chu va so?
+Int
+Byte
+Char
+String
+A
+Dau la khai bao bien hop le?
+theOne
+the One
+1the_One
+$the One
+C
+Co may cach de truyen tham so vao cho mot phuong thuc?
+2
+1
+3
+4
+A
+Dau la khai bao dung ve lop Cat?
+Class Cat{}
+class public Cat{}
+class Cat{}
+public Cat class{}
+B
+Neu phuong thuc cua ban ghi de mot so cac phuong thuc cua lop cha, ban co the goi phuong thuc bi ghi de thong qua tu khoa nao?
+parent
+super
+this
+static
+A
+Trong cac khai bao sau dau la khai bao khong hop le?
+int a1[][] = new int[][3];
+int a2[][] = new int[2][3];
+int a3[][] = new int[2][];
+int a4[][] = {{},{},{}}
+D
+File chua ma nguon java sau khi duoc bien dich co duoi la gi?
+.java
+.class
+.jav
+.exe
+C
+Java platform gom may thanh phan?
+1
+2
+3
+4
+A
