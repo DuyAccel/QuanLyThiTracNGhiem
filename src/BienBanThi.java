@@ -110,4 +110,10 @@ public class BienBanThi implements File{
             System.out.println("Khong the ghi File!");
         }
     }
+    public void xuatBienBan(){
+        System.out.println("Hoc Phan thi: "+hp.getTenHocPhan());
+        System.out.println("Ma hoc Phan:  "+hp.getMaHocPhan());
+        System.out.println("Ngay thi: " + NgayThi.Ngay+"/"+NgayThi.Thang+"/t"+NgayThi.Nam);
+        System.out.println("Thoi gian lam bai: "+ThoiGianLam+" phut");
+    }
     }

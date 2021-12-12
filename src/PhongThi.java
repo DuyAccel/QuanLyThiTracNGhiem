@@ -75,5 +75,15 @@ public class PhongThi {
            }
        }while (n!=4);
     }    
+    public void xuatThongTin(){
+        System.out.println("Ma Phong: " + MaPhong);
+        BienBan.xuatBienBan();
+        System.out.println();
+        System.out.println("Danh Sach Sinh Vien:");
+        SinhVien.xuatDS();
+        System.out.println();
+        System.out.println("Danh Sach Giam thi:");
+        GiamThi.xuatDS();
+    }
 
 }

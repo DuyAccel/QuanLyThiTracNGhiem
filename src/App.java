@@ -29,10 +29,17 @@ public class App {
         while(true){
             System.out.print("Nhap ma phong thi: ");
             index = Integer.parseInt(scan.nextLine());
-            if (dsPhongThi.timKiem(index) != -1)
+            if (dsPhongThi.timKiem(index) != -1){
+                System.out.println("Hay kiem tra Thong tin phong");
+                dsPhongThi.layPhongThi(index).xuatThongTin();
+                System.out.println("Nhan phim 1 de xac nhan!");
+                if (Integer.parseInt(scan.nextLine()) == 1)
                     break;
+            }
             System.out.println("Ma phong sai!!!");
         }
+        
+
         return dsPhongThi.layPhongThi(index);
     }
 
@@ -94,14 +101,51 @@ public class App {
             }
             System.out.println("Mat khau sai!!!");
         }
+        int n;
         while(true){
             System.out.println("Vui Long lua chon Thao tac!");
             System.out.println("1. Doi Mat Khau");
             System.out.println("2. Doi File Danh Sach Phong thi");
             System.out.println("3. Cap Nhat Thong tin Danh Sach Phong");
             System.out.println("4. Cap Nhat thong tin Phong thi x");
-            System.out.println("5. Cap Nhat Danh Sach ");
-
+            System.out.println("5. Cap Nhat Danh Sach Hoc Phan");
+            System.out.println("6. Thoat");
+            n = Integer.parseInt(scan.nextLine());
+            switch(n){
+                case 1:
+                    System.out.print("Nhap Mat khau moi: ");
+                    MatKhau = scan.nextLine();
+                    break;
+                case 2:
+                    System.out.println("Nhap ten File DS Phong Thi moi");
+                    dsPhongThi.docFile(scan.nextLine()+".txt");
+                    break;
+                case 3:
+                    System.out.println("");
+                    break;
+                case 4:
+                    while(true){
+                        System.out.print("Nhap ma phong thi: ");
+                        int index = Integer.parseInt(scan.nextLine());
+                        if (dsPhongThi.timKiem(index) != -1){
+                            dsPhongThi.layPhongThi(index).capNhat();
+                            break; 
+                        }
+                        System.out.println("Ma phong sai!!!");
+                    }
+                    
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    return;
+                default:
+                    System.out.println("Khong Hop le!!!!");
+                    break;
+            }
+            System.out.println("Nhan 1 de Tiep Tuc");
+            if (Integer.parseInt(scan.nextLine()) != 1)
+                return;
         }
     }
 }
