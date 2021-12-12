@@ -3,12 +3,12 @@ import java.util.Arrays;
 public class ThongKe implements File{
     private static int DiemTuyetDoi = 0;
     private static int NamGioi = 0;
-    private static DSHocPhan dsHocPhan;
+    private static DSHocPhan dsHocPhan = new DSHocPhan();
     private static int[] XepLoai = new int[5];
     private static int[] DanhSachDiem;
     private static int[] DanhSachSinhVien = new int[1];
     ThongKe(){
-        dsHocPhan.docDSTuFile();
+
         DanhSachDiem = new int[(dsHocPhan.hp).length];
         DanhSachSinhVien[0] = -1;
     }

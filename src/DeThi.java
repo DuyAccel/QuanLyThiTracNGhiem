@@ -6,16 +6,23 @@ public class DeThi extends HocPhan implements ChinhSua{
     protected int MaDe;
     protected ThoiGian NgayThi;                       
     protected  int ThoiGianLam;
-    protected int SoCau;
-    protected BoCauHoi De;
+    protected CauHoi[] De;
 
-    public DeThi(int MaHocPhan, String TenHocPhan, int TinChi, int MaDe,int SoCau, String NgayThi, int ThoiGianLam, BoCauHoi boCauHoi) {
-        super(MaHocPhan, TenHocPhan, TinChi);
+    DeThi(HocPhan hocPhan, BoCauHoi boCauHoi, String NgayThi, int ThoiGianLam){
+        super(hocPhan.MaHocPhan, hocPhan.TenHocPhan, hocPhan.TinChi, hocPhan.SoCau);
+        De = new CauHoi[hocPhan.SoCau];
+        this.NgayThi = new ThoiGian(NgayThi);
+        this.ThoiGianLam = ThoiGianLam;
+        taoDeThi(boCauHoi);
+    }
+
+    DeThi(int MaHocPhan, String TenHocPhan, int TinChi, int MaDe,int SoCau, String NgayThi, int ThoiGianLam, BoCauHoi boCauHoi) {
+        super(MaHocPhan, TenHocPhan, TinChi, SoCau);
         this.MaDe = MaDe;
         this.SoCau = SoCau;
         this.NgayThi = new ThoiGian(NgayThi);
         this.ThoiGianLam = ThoiGianLam;
-        De.ch = new CauHoi[SoCau];
+        De = new CauHoi[SoCau];
         taoDeThi(boCauHoi);
     }
 
@@ -25,14 +32,28 @@ public class DeThi extends HocPhan implements ChinhSua{
         int Gen, i = 0;
         while (i < SoCau){
             Gen = rand.nextInt(bch.getN());
-            if (DanhDau[Gen]){
-                DanhDau[Gen] = false;
-                De.ch[i] = bch.ch[Gen];
+            if (DanhDau[Gen] == false){
+                DanhDau[Gen] = true;
+                De[i] = bch.ch[Gen];
                 i++;
             }
         }
     }
+    public void inCauHoi(int i){
+        System.out.println("Cau " + i +": "+De[i].getNoiDung());
+        System.out.println("A. " + De[i].getPhuongAnA());
+        System.out.println("B. " + De[i].getPhuongAnB());
+        System.out.println("C. " + De[i].getPhuongAnC());
+        System.out.println("D. " + De[i].getPhuongAnD());
+        System.out.print("Lua Chon: ");
+    }
 
+    public String[] layDapAn(){
+        String[] DapAn = new String[SoCau];
+        for (int i = 0; i<SoCau; i++)
+            DapAn[i] = De[i].getDapAn();
+        return DapAn;
+    }
 
     public int getMaDe() {
         return MaDe;

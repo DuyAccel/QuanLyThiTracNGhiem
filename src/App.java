@@ -1,8 +1,11 @@
 import java.util.Scanner;
 public class App {
     private static Scanner scan = new Scanner(System.in);
-    static DSPhongThi dsPhongThi = new DSPhongThi();
+    private static DSPhongThi dsPhongThi = new DSPhongThi();
+    private static BoCauHoi boCauHoi = new BoCauHoi();
     private static String FilePhongThi = "DSPhong.txt";
+    private static String FileCauHoi = "CauHoi.txt";
+    private static ThongKe thongKe = new ThongKe();
     private static String MatKhau = "12345";
     public static void clearScreen(){
         for (int i = 0; i < 80; i++)
@@ -15,12 +18,93 @@ public class App {
         System.out.println();
     }
     public static void main(String[] args){
+        boCauHoi.docFile(FileCauHoi);
         dsPhongThi.docFile(FilePhongThi);
-        menuDangNhap();
-        PhongThi Phong = thietLapPhongThi();
-        menuSinhVien(Phong.getSinhVien());
+        boolean Loop = true;
+        while (Loop){
+            menuDangNhap();
+            PhongThi Phong = thietLapPhongThi();
+            Thi thi;
+            SinhVien sv;
+            HocPhan hocPhan;
+            boolean flag = true;
+            do {
+                sv = menuSinhVien(Phong.getSinhVien());
+                hocPhan = Phong.getBienBan().hp;
+                thi = new Thi(sv, boCauHoi, Phong.getBienBan().hp, Phong.getBienBan().getStringNgay(),
+                        Phong.getBienBan().ThoiGianLam);
+                clearScreen();
+                int n = Phong.getBienBan().hp.getSoCau();
+                for (int i = 0; i < n; i++) {
+                    thi.menuThi(i, scan);
+                }
+                thongKe.thongkeDiem(thi.tinhDiem(), hocPhan.getMaHocPhan());
+                System.out.println("Chuc Mung ban da hoan thanh Bai Thi");
+                System.out.println("Diem ban dat duoc la: " + thi.tinhDiem());
+                System.out.println("Nhap ki tu bat ky de THOAT!");
+                scan.nextLine();
+                clearScreen();
+                boolean loop = true;
+                do {
+                    System.out.println("Vui long Lua chon: ");
+                    System.out.println("0. Thoat Qua Trinh Thi");
+                    System.out.println("1. Tiep Tuc cho Sinh vien moi trong phong thi");
+                    switch (Integer.parseInt(scan.nextLine())) {
+                        case 0:
+                            flag = false;
+                            loop = false;
+                            break;
+                        case 1:
+                            loop = false;
+                            break;
+                        default:
+                            System.out.println("Lua chon khong hop le!!!");
+                    }
+                } while (loop);
+            } while (flag);
+            flag = true;
+            do {
+                clearScreen();
+                System.out.println("Chuyen Sang Phong Thi khac?");
+                System.out.println("0. No ! Khong Thi nua");
+                System.out.println("1. Yes! Tiep Tuc Thi");
+                switch (Integer.parseInt(scan.nextLine())) {
+                    case 0:
+                        flag = false;
+                        Loop = false;
+                        break;
+                    case 1:
+                        flag = false;
+                        break;
+                    default:
+                        System.out.println("Lua chon khong hop le!!!");
+                }
+            } while (flag);
+        }
+        Loop = true;
+            do {
+                clearScreen();
+                System.out.println("Xem Thong Ke Ky thi?");
+                System.out.println("0. Khong! THoat Chuong Trinh luon!");
+                System.out.println("1. Co   ! Xem Thong ke thoi~");
+                switch (Integer.parseInt(scan.nextLine())) {
+                    case 0:
+                        Loop = false;
+                        break;
+                    case 1:
+                        Loop = false;
+                        clearScreen();
+                        thongKe.xuatThongKe();
+                        break;
+                    default:
+                        System.out.println("Lua chon khong hop le!!!");
+                }
+            } while (Loop);
+        
         scan.close();
     }
+
+    
 
     private static PhongThi thietLapPhongThi() {
         clearScreen();
@@ -69,12 +153,13 @@ public class App {
             menuAdmin();
         scan.close();
     }
-    public static void menuSinhVien(DSSinhVien sv){
+    public static SinhVien menuSinhVien(DSSinhVien sv){
         clearScreen();
+        int x;
         do{
             System.out.print("Vui long nhap Ma so Sinh Vien: ");
             int MaSo = Integer.parseInt(scan.nextLine());
-            int x = sv.timKiem(MaSo);
+            x = sv.timKiem(MaSo);
             if (x == -1)
                 System.out.println("Khong tim ra Sinh Vien phu hop!");
             else{
@@ -82,13 +167,12 @@ public class App {
                 System.out.println();
                 sv.laySV(x).xuatThongTin();
                 System.out.println();
-                System.out.println("Nhap phim:");
-                System.out.println("0. Nhap lai ma sinh vien");
-                System.out.println("1. Bat dau thi");
+                System.out.println("Nhap phim 1 de bat dau thi!");
                 if (Integer.parseInt(scan.nextLine()) == 1)
                         break;
             }
         }while(true);
+        return sv.laySV(x);
     }
     
     public static void menuAdmin(){

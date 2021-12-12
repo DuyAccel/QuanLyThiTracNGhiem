@@ -15,12 +15,7 @@ public class BienBanThi implements File{
     protected HocPhan hp;
 
     BienBanThi(){}
-    BienBanThi(int MaPhong, String NgayThi, int ThoiGianLam){
-         this.MaPhong = MaPhong;
-         this.ThoiGianLam = ThoiGianLam;
-         this.NgayThi = new ThoiGian(NgayThi);
-     }
-
+    
     public int getMaPhong() {
         return MaPhong;
     }
@@ -32,6 +27,10 @@ public class BienBanThi implements File{
 
     public void setNgayThi(ThoiGian NgayThi) {
         this.NgayThi = NgayThi;
+    }
+
+    public String getStringNgay(){
+        return NgayThi.Ngay + "/" + NgayThi.Thang + "/" +NgayThi.Nam;
     }
 
     public int getThoiGianLam() {
@@ -84,8 +83,9 @@ public class BienBanThi implements File{
             NgayThi = new ThoiGian(line);
             line = buffer.readLine();
             ThoiGianLam = Integer.parseInt(line);
+            line = buffer.readLine();
             String []data = line.split(";");
-            hp = new HocPhan(Integer.parseInt(data[0]), data[1], Integer.parseInt(data[2]));
+            hp = new HocPhan(Integer.parseInt(data[0]), data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]));
             buffer.close();
             file.close();
         } catch (Exception e) {

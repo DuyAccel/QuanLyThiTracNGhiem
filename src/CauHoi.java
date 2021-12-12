@@ -85,7 +85,8 @@ public class CauHoi implements ChinhSua{
         }while (n!= 7);
     }
     @Override
-    public void nhap() {    
+    public void nhap() {   
+        chinhSua(); 
     }
     @Override
     public void xuat() {

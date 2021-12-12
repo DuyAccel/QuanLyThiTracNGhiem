@@ -3,7 +3,9 @@ import java.util.Arrays;
 import java.io.*;
 public class DSHocPhan implements DuyetDS{
     public HocPhan[] hp;
-    DSHocPhan(){}
+    DSHocPhan(){
+        docDSTuFile();
+    }
     @Override
     public void nhapDS() {
         Scanner scan = new Scanner(System.in);
@@ -84,7 +86,7 @@ public class DSHocPhan implements DuyetDS{
 
     public void docDSTuFile() {
         try {
-            FileReader file = new FileReader("DSHP.txt");
+            FileReader file = new FileReader("HocPhan.txt");
             BufferedReader buffer = new BufferedReader(file);
             int n = 0;
             hp = new HocPhan[1];
@@ -96,7 +98,7 @@ public class DSHocPhan implements DuyetDS{
                 n++;
                 hp = Arrays.copyOf(hp, n);
                 String []data = line.split(";");
-                hp[n-1] = new HocPhan(Integer.parseInt(data[0]), data[1], Integer.parseInt(data[2]));
+                hp[n-1] = new HocPhan(Integer.parseInt(data[0]), data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]));
             }
             buffer.close();
             file.close();

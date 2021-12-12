@@ -10,7 +10,7 @@ public  class DSPhongThi implements DuyetDS, File{
     private int HocKy;
     private int n;
     private PhongThi[] pt;
-
+    
     public int getNam() {
         return Nam;
     }
