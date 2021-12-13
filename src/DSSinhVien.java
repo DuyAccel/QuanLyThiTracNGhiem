@@ -59,6 +59,7 @@ public class DSSinhVien implements DuyetDS, File{
         System.out.println("Ma danh sach: " + MaSoDS);
         System.out.println("So luong sinh vien: " + n);
         for(int i = 0; i < n; i++){
+            System.out.println();
             System.out.println("Sinh vien " + i);
             System.out.println("Ten: " + sv[i].getTen());
             System.out.println("Ma So: " + sv[i].getMaSo());
@@ -66,6 +67,7 @@ public class DSSinhVien implements DuyetDS, File{
             System.out.println("Ngay Sinh: " + sv[i].getNgaySinh());
             System.out.println("Gioi Tinh: " + sv[i].getStringGioiTinh());
             System.out.println("Cam thi: " + sv[i].getStringCamThi());
+            System.out.println();
         }
     }
     @Override

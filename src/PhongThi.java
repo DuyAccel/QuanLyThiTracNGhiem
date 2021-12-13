@@ -48,6 +48,11 @@ public class PhongThi {
             return TenFileBienBan;
         }
 
+        public void sapXep(){
+            SinhVien.sapXep();
+            GiamThi.sapXep();
+        }
+
         public void capNhat() {
        Scanner scan = new Scanner(System.in);
        int n;

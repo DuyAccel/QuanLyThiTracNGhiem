@@ -51,12 +51,14 @@ public class DSGiamThi implements DuyetDS, File{
         System.out.println("Ma danh sach: " + MaSoDS);
         System.out.println("So luong Giam Thi: " + n);
         for(int i = 0; i < n; i++){
+            System.out.println();
             System.out.println("Giam Thi " + i);
             System.out.println("Ten: " + gt[i].getTen());
             System.out.println("Ma So: " + gt[i].getMaSo());
-            System.out.println("Lop: " + gt[i].getHocVi());
+            System.out.println("Hoc Vi: " + gt[i].getHocVi());
             System.out.println("Ngay Sinh: " + gt[i].getNgaySinh());
             System.out.println("Gioi Tinh: " + gt[i].getStringGioiTinh());
+            System.out.println();
         }
     }
     @Override

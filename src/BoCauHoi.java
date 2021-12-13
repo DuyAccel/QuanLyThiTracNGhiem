@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class BoCauHoi implements DuyetDS,File{
-    private String TenFileCauHoi;
+    
     private int n;
     protected CauHoi[] ch;
     
@@ -15,7 +15,7 @@ public class BoCauHoi implements DuyetDS,File{
         return n;
     }
     public BoCauHoi(String TenFileCauHoi) {
-        this.TenFileCauHoi = TenFileCauHoi;
+        
         docFile(TenFileCauHoi+".txt");
     }
     @Override
@@ -92,7 +92,6 @@ public class BoCauHoi implements DuyetDS,File{
                          break;
                      n++;
                      ch = Arrays.copyOf(ch, n);
-                    
                      data[1] = buffer.readLine();
                      data[2] = buffer.readLine();
                      data[3] = buffer.readLine();
