@@ -83,9 +83,12 @@ public class DSSinhVien implements DuyetDS, File{
         return true;
     }
     @Override
-    public boolean themPT() {
+    public boolean themPT(){
+        return true;
+    }
+    public boolean themPT(Scanner scan) {
         System.out.print("Nhap vi tri muon them: ");
-        Scanner scan = new Scanner(System.in);
+        
         int x = Integer.parseInt(scan.nextLine());
         if (x > n || x < 0)     return false;
         n++;
@@ -93,7 +96,7 @@ public class DSSinhVien implements DuyetDS, File{
         for (int i = n - 1; i > x; i--){
             sv[i] = sv[i-1];
         }
-        sv[x].capNhat();
+        sv[x].capNhat(scan);
         return true;
     }
     @Override

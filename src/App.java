@@ -21,8 +21,9 @@ public class App {
         boCauHoi.docFile(FileCauHoi);
         dsPhongThi.docFile(FilePhongThi);
         boolean Loop = true;
+        menuDangNhap();
         while (Loop){
-            menuDangNhap();
+            
             PhongThi Phong = thietLapPhongThi();
             Phong.sapXep();
             Thi thi;
@@ -31,20 +32,26 @@ public class App {
             boolean flag = true;
             do {
                 sv = menuSinhVien(Phong.getSinhVien());
-                hocPhan = Phong.getBienBan().hp;
-                thi = new Thi(sv, boCauHoi, Phong.getBienBan().hp, Phong.getBienBan().getStringNgay(),
-                        Phong.getBienBan().ThoiGianLam);
-                clearScreen();
-                int n = Phong.getBienBan().hp.getSoCau();
-                for (int i = 0; i < n; i++) {
-                    thi.menuThi(i, scan);
+                if (sv.getCamthi()){
+                    System.out.println("Ban Da bi Cam thi!!!");
+                    System.out.println("Vui long lien he Giam Thi!!!!");
                 }
-                thongKe.thongkeDiem(thi.tinhDiem(), hocPhan.getMaHocPhan());
-                System.out.println("Chuc Mung ban da hoan thanh Bai Thi");
-                System.out.println("Diem ban dat duoc la: " + thi.tinhDiem());
-                System.out.println("Nhap ki tu bat ky de THOAT!");
-                scan.nextLine();
-                clearScreen();
+                else{
+                    hocPhan = Phong.getBienBan().hp;
+                    thi = new Thi(sv, boCauHoi, Phong.getBienBan().hp, Phong.getBienBan().getStringNgay(),
+                            Phong.getBienBan().ThoiGianLam);
+                    clearScreen();
+                    int n = Phong.getBienBan().hp.getSoCau();
+                    for (int i = 0; i < n; i++) {
+                        thi.menuThi(i, scan);
+                    }
+                    thongKe.thongkeDiem(thi.tinhDiem(), hocPhan.getMaHocPhan());
+                    System.out.println("Chuc Mung ban da hoan thanh Bai Thi");
+                    System.out.println("Diem ban dat duoc la: " + thi.tinhDiem());
+                    System.out.println("Nhap ki tu bat ky de THOAT!");
+                    scan.nextLine();
+                    clearScreen();
+                }
                 boolean loop = true;
                 do {
                     System.out.println("Vui long Lua chon: ");
@@ -129,8 +136,6 @@ public class App {
 
     public static void menuDangNhap(){
       
-
-        
         int n;
         do{
             System.out.println();
@@ -151,7 +156,7 @@ public class App {
             return;
         else
             menuAdmin();
-        scan.close();
+        
     }
     public static SinhVien menuSinhVien(DSSinhVien sv){
         clearScreen();
@@ -192,7 +197,7 @@ public class App {
             System.out.println("2. Doi File Danh Sach Phong thi");
             System.out.println("3. Thay Doi Bo Cau Hoi");
             System.out.println("4. Cap Nhat thong tin Phong thi x");
-            System.out.println("5. Cap Nhat Danh Sach Hoc Phan");
+            System.out.println("5. In Danh Sach");
             System.out.println("6. Thoat");
             n = Integer.parseInt(scan.nextLine());
             switch(n){
@@ -234,14 +239,14 @@ public class App {
                                     dsPhongThi.layPhongThi(index).capNhat();
                                     break;
                                 case 2:
-                                    dsPhongThi.layPhongThi(index).getSinhVien().themPT();
+                                    dsPhongThi.layPhongThi(index).getSinhVien().themPT(scan);
                                     break;
                                 case 3:
                                     System.out.print("Nhap vi tri muon xoa:");
                                     dsPhongThi.layPhongThi(index).getSinhVien().xoaPT(Integer.parseInt(scan.nextLine()));
                                     break;
                                 case 4:
-                                    dsPhongThi.layPhongThi(index).getGiamThi().themPT();
+                                    dsPhongThi.layPhongThi(index).getGiamThi().themPT(scan);
                                     break;
                                 case 5:
                                     System.out.print("Nhap vi tri muon xoa:");
@@ -260,6 +265,47 @@ public class App {
                     
                     break;
                 case 5:
+                    System.out.print("Nhap ma phong thi: ");
+                    int index = Integer.parseInt(scan.nextLine());
+                    if (dsPhongThi.timKiem(index) == -1) {
+                        System.out.println("Ma phong sai!!!");
+                        break;
+                    }
+                    boolean loop = true;
+                while (loop){
+                    System.out.println("Lua Chon Thao Tac:");
+                    System.out.println("1. Xuat Danh sach Phong Thi");
+                    System.out.println("2. Xuat danh sach Sinh Vien");
+                    System.out.println("3. Xuat danh sach Giam thi");
+                    System.out.println("4. Xuat danh sach hoc phan");
+                    System.out.println("6. Thoat");
+                    switch (Integer.parseInt(scan.nextLine())){
+                        case 1:
+                            dsPhongThi.layPhongThi(index).xuatThongTin();
+                            break;
+                        case 2:
+                            dsPhongThi.layPhongThi(index).getSinhVien().xuatDS();
+                            break;
+                        case 3:
+                            
+                            dsPhongThi.layPhongThi(index).getGiamThi().xuatDS();
+                            break;
+                        case 4:
+                            DSHocPhan dsHocPhan = new DSHocPhan();
+                            dsHocPhan.xuatDS();
+                            break;
+                        case 5:
+                           
+                            dsPhongThi.layPhongThi(index).getGiamThi().xoaPT(Integer.parseInt(scan.nextLine()));
+                            break;
+                        case 6:
+                            loop = false;
+                            break;
+                        default:
+                            System.out.println("Lua chon khong hop le!!!");
+                            break;
+                    }
+                }
                     break;
                 case 6:
                     return;

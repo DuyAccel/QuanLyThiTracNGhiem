@@ -10,14 +10,15 @@ public class GiamThi extends ConNguoi{
         return HocVi;
     }
     @Override
-    public void capNhat() {
-        Scanner scan = new Scanner(System.in);
+    public void capNhat() {}
+    public void capNhat(Scanner scan){
+
         int n;
         do{
             System.out.println("Chon muc can chinh sua:");
             System.out.println("1. Ten\n2. Maso\n3. HocVi\n4. NgaySinh\n5. Gioi Tinh\n6. Thoat");
             System.out.print("Chon: ");
-            n = scan.nextInt();
+            n = Integer.parseInt(scan.nextLine());
             switch (n){
                 case 1:
                     System.out.print("Nhap Ten moi: ");

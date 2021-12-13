@@ -26,14 +26,15 @@ public class SinhVien extends ConNguoi{
         System.out.println();
     }
     @Override
-    public void capNhat() {
-        Scanner scan = new Scanner(System.in);
+    public void capNhat(){}
+    public void capNhat(Scanner scan) {
+       
         int n;
         do{
             System.out.println("Chon muc can chinh sua:");
             System.out.println("1. Ten\n2. Maso\n3. Lop\n4. NgaySinh\n5. CamThi\n6. Gioi Tinh\n7. Thoat");
             System.out.print("Chon: ");
-            n = scan.nextInt();
+            n = Integer.parseInt(scan.nextLine());
             switch (n){
                 case 1:
                     System.out.print("Nhap Ten moi: ");
