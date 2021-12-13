@@ -57,10 +57,10 @@ public class PhongThi {
        Scanner scan = new Scanner(System.in);
        int n;
        do{
-           System.out.println("vui lòng chọn mục cần chỉnh sữa");
+           System.out.println("vui long chọn mục can chinh sua");
            System.out.println("1. MaHocPhan \n2.Ten File Giam Thi \n3.Ten File Sinh Vien \n4. Ten File Bien Ban" );
-           System.out.println("chọn: ");
-           n = scan.nextInt();
+           System.out.println("chon: ");
+           n = Integer.parseInt(scan.nextLine());
            switch(n){
                 case 1:
                    System.out.println("Nhập Ma Phong moi: ");
