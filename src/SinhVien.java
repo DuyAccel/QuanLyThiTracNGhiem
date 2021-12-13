@@ -22,7 +22,7 @@ public class SinhVien extends ConNguoi{
     public void xuatThongTin(){
         System.out.println("Ma So Sinh Vien: " + MaSo);
         System.out.println("Ten: " + Ten);
-        System.out.println("Gioi Tinh:" + getNgaySinh() + "\tNgay Sinh: " + getNgaySinh());
+        System.out.println("Gioi Tinh:" + getStringGioiTinh() + "\tNgay Sinh: " + getNgaySinh());
         System.out.println();
     }
     @Override
