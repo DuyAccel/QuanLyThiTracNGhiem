@@ -9,38 +9,18 @@ import java.util.Scanner;
 
 
 public class BienBanThi implements File{
-    protected int MaPhong;
+    protected int MaDS;
     protected ThoiGian NgayThi;
     protected  int ThoiGianLam;
     protected HocPhan hp;
 
     BienBanThi(){}
     
-    public int getMaPhong() {
-        return MaPhong;
-    }
-
-
-    public ThoiGian getNgayThi() {
-        return NgayThi;
-    }
-
-    public void setNgayThi(ThoiGian NgayThi) {
-        this.NgayThi = NgayThi;
-    }
-
+ 
     public String getStringNgay(){
         return NgayThi.Ngay + "/" + NgayThi.Thang + "/" +NgayThi.Nam;
     }
 
-    public int getThoiGianLam() {
-        return ThoiGianLam;
-    }
-
-    public void setThoiGianLam(int ThoiGianLam) {
-        this.ThoiGianLam = ThoiGianLam;
-    }
-    
      public void capNhat() {
        Scanner scan = new Scanner(System.in);
        int n;
@@ -52,7 +32,7 @@ public class BienBanThi implements File{
            switch(n){
                case 1:
                    System.out.print("Nhập Mã Danh Sách mới: ");
-                   MaPhong = Integer.parseInt(scan.nextLine());
+                   MaDS = Integer.parseInt(scan.nextLine());
                    break;
                    
                case 2:
@@ -78,7 +58,7 @@ public class BienBanThi implements File{
             FileReader file = new FileReader(FileName);
             BufferedReader buffer = new BufferedReader(file);
             String line = buffer.readLine();
-            MaPhong = Integer.parseInt(line);
+            MaDS = Integer.parseInt(line);
             line = buffer.readLine();
             NgayThi = new ThoiGian(line);
             line = buffer.readLine();
@@ -95,9 +75,9 @@ public class BienBanThi implements File{
     @Override
     public void ghiFile() {
         try {
-            FileWriter file = new FileWriter("BienBan" +MaPhong);
+            FileWriter file = new FileWriter("BienBan" +MaDS);
             BufferedWriter buffer = new BufferedWriter(file);
-            buffer.write(MaPhong);
+            buffer.write(MaDS);
             buffer.newLine();
             buffer.write(NgayThi.Ngay + "/" + NgayThi.Thang + "/" + NgayThi.Nam);
             buffer.newLine();

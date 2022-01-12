@@ -3,11 +3,10 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class DeThi extends HocPhan implements ChinhSua{
-    protected int MaDe;
-    protected ThoiGian NgayThi;                       
-    protected  int ThoiGianLam;
-    protected CauHoi[] De;
-
+    private int MaDe;
+    private ThoiGian NgayThi;                       
+    private  int ThoiGianLam;
+    private CauHoi[] De;
     DeThi(HocPhan hocPhan, BoCauHoi boCauHoi, String NgayThi, int ThoiGianLam){
         super(hocPhan.MaHocPhan, hocPhan.TenHocPhan, hocPhan.TinChi, hocPhan.SoCau);
         De = new CauHoi[hocPhan.SoCau];

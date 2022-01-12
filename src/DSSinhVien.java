@@ -58,16 +58,13 @@ public class DSSinhVien implements DuyetDS, File{
     public void xuatDS() {
         System.out.println("Ma danh sach: " + MaSoDS);
         System.out.println("So luong sinh vien: " + n);
-        for(int i = 0; i < n; i++){
-            System.out.println();
-            System.out.println("Sinh vien " + i);
-            System.out.println("Ten: " + sv[i].getTen());
-            System.out.println("Ma So: " + sv[i].getMaSo());
-            System.out.println("Lop: " + sv[i].getLop());
-            System.out.println("Ngay Sinh: " + sv[i].getNgaySinh());
-            System.out.println("Gioi Tinh: " + sv[i].getStringGioiTinh());
-            System.out.println("Cam thi: " + sv[i].getStringCamThi());
-            System.out.println();
+        System.out.printf("|%-10s|%-25s|%-10s|%-12s|%-10s|%s\n", "Ma So", "Ten", "Lop", "Ngay Sinh", "Gioi Tinh", "Cam thi");
+        for (int i = 0; i < 75; i++)
+            System.out.print("-");
+        System.out.println();
+        for (SinhVien s : sv) {
+            System.out.printf("|%-10s|%-25s|%-10s|%-12s|%-10s|%s\n",s.getMaSo(), s.getTen(), s.getLop(),
+                        s.getNgaySinh(), s.getStringGioiTinh(), s.getStringCamThi());
         }
     }
     @Override
@@ -83,21 +80,12 @@ public class DSSinhVien implements DuyetDS, File{
         return true;
     }
     @Override
-    public boolean themPT(){
-        return true;
-    }
-    public boolean themPT(Scanner scan) {
-        System.out.print("Nhap vi tri muon them: ");
-        
-        int x = Integer.parseInt(scan.nextLine());
-        if (x > n || x < 0)     return false;
+    public void themPT(){}
+    public void themPT(Scanner scan) {
         n++;
         sv = Arrays.copyOf(sv, n);
-        for (int i = n - 1; i > x; i--){
-            sv[i] = sv[i-1];
-        }
-        sv[x].capNhat(scan);
-        return true;
+        sv[n-1] = new SinhVien();
+        sv[n-1].capNhat(scan);
     }
     @Override
     public void timKiem(){
@@ -166,11 +154,14 @@ public class DSSinhVien implements DuyetDS, File{
             buffer.newLine();
             buffer.write("So luong sinh vien: " + n);
             buffer.newLine();
-            
+            buffer.write(String.format("|%-10s|%-25s|%-10s|%-12s|%-10s|%s", "Ma So", "Ten", "Lop", "Ngay Sinh", "Gioi Tinh", "Cam thi"));
+            buffer.newLine();
+            for (int i = 0; i < 75; i++)
+                buffer.write("-");
             buffer.newLine();
             for (SinhVien s : sv) {
-                buffer.write(s.getMaSo()+ "\t\t\t" +s.getTen() + "\t\t\t\t\t" + s.getLop() + "\t\t\t"
-                            + s.getNgaySinh() + "\t\t" + s.getStringGioiTinh() + "\t\t\t" + s.getStringCamThi());
+                buffer.write(String.format("|%-10s|%-25s|%-10s|%-12s|%-10s|%s",s.getMaSo(), s.getTen(),
+                            s.getLop(), s.getNgaySinh(), s.getStringGioiTinh(), s.getStringCamThi()));
                 buffer.newLine();
             }
             buffer.close();
@@ -178,6 +169,8 @@ public class DSSinhVien implements DuyetDS, File{
         } catch (IOException ex) {
             System.out.println("Khong the ghi File!");
         }
-        
+    }
+    public int getN() {
+        return n;
     }
 }

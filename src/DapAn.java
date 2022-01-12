@@ -3,7 +3,7 @@ public class DapAn extends HocPhan {
     private String[] DapAn;
     DapAn(HocPhan hocPhan, DeThi dethi){
         super(hocPhan.MaHocPhan, hocPhan.TenHocPhan, hocPhan.TinChi, hocPhan.SoCau);
-        MaDe = dethi.MaDe;
+        MaDe = dethi.getMaDe();
         DapAn = dethi.layDapAn();
     }
     public String[] getDapAn() {

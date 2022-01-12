@@ -7,6 +7,7 @@ public class App {
     private static String FileCauHoi = "CauHoi.txt";
     private static ThongKe thongKe = new ThongKe();
     private static String MatKhau = "12345";
+    private static KetQua[]   ketQua;
     public static void clearScreen(){
         for (int i = 0; i < 80; i++)
             System.out.println();
@@ -18,19 +19,24 @@ public class App {
         System.out.println();
     }
     public static void main(String[] args){
+        
         boCauHoi.docFile(FileCauHoi);
         dsPhongThi.docFile(FilePhongThi);
+        ketQua = new KetQua[dsPhongThi.getN()];
+        int vitri = -1, TongViPham, ViPham;
         boolean Loop = true;
         menuDangNhap();
         while (Loop){
-            
+            vitri++;
             PhongThi Phong = thietLapPhongThi();
             Phong.sapXep();
+            ketQua[vitri] = new KetQua(Phong);
             Thi thi;
             SinhVien sv;
             HocPhan hocPhan;
             boolean flag = true;
             do {
+                TongViPham = 0;
                 sv = menuSinhVien(Phong.getSinhVien());
                 if (sv.getCamthi()){
                     System.out.println("Ban Da bi Cam thi!!!");
@@ -45,9 +51,21 @@ public class App {
                     for (int i = 0; i < n; i++) {
                         thi.menuThi(i, scan);
                     }
-                    thongKe.thongkeDiem(thi.tinhDiem(), hocPhan.getMaHocPhan());
+                    double diem = thi.tinhDiem();
+                    thongKe.thongkeDiem(diem, hocPhan.getMaHocPhan());
+                    thongKe.thongkeNam(sv.MaSo, sv.GioiTinh);
                     System.out.println("Chuc Mung ban da hoan thanh Bai Thi");
-                    System.out.println("Diem ban dat duoc la: " + thi.tinhDiem());
+                    System.out.println("Diem ban dat duoc la: " + diem);
+
+                    System.out.println();
+                    System.out.println();
+                    System.out.println("HAY GIU NGUYEN MAN HINH VA THONG BAO CHO CAN BO COI THI");
+                    scan.nextLine();
+
+                    System.out.print("Hay nhap so Vi Pham ma Sinh Vien thuc hien: ");
+                    ViPham = Integer.parseInt(scan.nextLine());
+                    TongViPham += ViPham;
+                    ketQua[vitri].nhapDiem(sv.MaSo, diem, ViPham);              
                     System.out.println("Nhap ki tu bat ky de THOAT!");
                     scan.nextLine();
                     clearScreen();
@@ -71,11 +89,15 @@ public class App {
                 } while (loop);
             } while (flag);
             flag = true;
+            clearScreen();
             do {
-                clearScreen();
+
+                
                 System.out.println("Chuyen Sang Phong Thi khac?");
                 System.out.println("0. No ! Khong Thi nua");
                 System.out.println("1. Yes! Tiep Tuc Thi");
+                System.out.println("2. Xem Bang diem cua Phong hien tai");
+                System.out.print("Lua chon: ");
                 switch (Integer.parseInt(scan.nextLine())) {
                     case 0:
                         flag = false;
@@ -84,10 +106,18 @@ public class App {
                     case 1:
                         flag = false;
                         break;
+                    case 2:
+                        clearScreen();
+                        ketQua[vitri].xuatDS(TongViPham);
+                        System.out.println();
+                        break;
                     default:
                         System.out.println("Lua chon khong hop le!!!");
+                        System.out.println();
+                        break;
                 }
             } while (flag);
+            ketQua[vitri].xuatFile();
         }
         Loop = true;
             do {
@@ -200,6 +230,7 @@ public class App {
             System.out.println("5. In Danh Sach");
             System.out.println("6. Thoat");
             n = Integer.parseInt(scan.nextLine());
+            clearScreen();
             switch(n){
                 case 1:
                     System.out.print("Nhap Mat khau moi: ");
@@ -228,6 +259,7 @@ public class App {
                         boolean loop = true;
                         while (loop){
                             System.out.println("Lua Chon Thao Tac:");
+                            System.out.println("0. Xem Phong Thi");
                             System.out.println("1. Cap nhat Thong Tin co san");
                             System.out.println("2. Them Sinh Vien");
                             System.out.println("3. Xoa Sinh Vien");
@@ -235,20 +267,33 @@ public class App {
                             System.out.println("5. xoa Giam thi");
                             System.out.println("6. Thoat");
                             switch (Integer.parseInt(scan.nextLine())){
+                                case 0:
+                                    clearScreen();
+                                    dsPhongThi.layPhongThi(index).xuatThongTin();
+                                    scan.nextLine();
+                                    break;
                                 case 1:
+                                    clearScreen();
                                     dsPhongThi.layPhongThi(index).capNhat();
                                     break;
                                 case 2:
+                                    clearScreen();
                                     dsPhongThi.layPhongThi(index).getSinhVien().themPT(scan);
+                                    scan.nextLine();
                                     break;
                                 case 3:
+                                    clearScreen();
                                     System.out.print("Nhap vi tri muon xoa:");
                                     dsPhongThi.layPhongThi(index).getSinhVien().xoaPT(Integer.parseInt(scan.nextLine()));
+                                    scan.nextLine();
                                     break;
                                 case 4:
+                                    clearScreen();
                                     dsPhongThi.layPhongThi(index).getGiamThi().themPT(scan);
+                                    scan.nextLine();
                                     break;
                                 case 5:
+                                    clearScreen();
                                     System.out.print("Nhap vi tri muon xoa:");
                                     dsPhongThi.layPhongThi(index).getGiamThi().xoaPT(Integer.parseInt(scan.nextLine()));
                                     break;
@@ -257,57 +302,28 @@ public class App {
                                     break;
                                 default:
                                     System.out.println("Lua chon khong hop le!!!");
+                                    System.out.println("Nhap 1 de lua chon lai");
+                                    if (Integer.parseInt(scan.nextLine()) != 1)
+                                        loop = false;
                                     break;
                             }
+                            clearScreen();
                         }
                         break;
                     }
-                    
                     break;
                 case 5:
-                    System.out.print("Nhap ma phong thi: ");
-                    int index = Integer.parseInt(scan.nextLine());
-                    if (dsPhongThi.timKiem(index) == -1) {
-                        System.out.println("Ma phong sai!!!");
-                        break;
+                    for (int i = 0; i < dsPhongThi.getN(); i++){
+                        System.out.println();
+                        System.out.println();
+                        System.out.println("===========================================================================");
+                        System.out.println();
+                        System.out.println();
+
+                        dsPhongThi.layPhongThi(i).xuatThongTin();
                     }
-                    boolean loop = true;
-                while (loop){
-                    System.out.println("Lua Chon Thao Tac:");
-                    System.out.println("1. Xuat Danh sach Phong Thi");
-                    System.out.println("2. Xuat danh sach Sinh Vien");
-                    System.out.println("3. Xuat danh sach Giam thi");
-                    System.out.println("4. Xuat danh sach hoc phan");
-                    System.out.println("6. Thoat");
-                    switch (Integer.parseInt(scan.nextLine())){
-                        case 1:
-                            dsPhongThi.layPhongThi(index).xuatThongTin();
-                            break;
-                        case 2:
-                            dsPhongThi.layPhongThi(index).getSinhVien().xuatDS();
-                            break;
-                        case 3:
-                            
-                            dsPhongThi.layPhongThi(index).getGiamThi().xuatDS();
-                            break;
-                        case 4:
-                            DSHocPhan dsHocPhan = new DSHocPhan();
-                            dsHocPhan.xuatDS();
-                            break;
-                        case 5:
-                           
-                            dsPhongThi.layPhongThi(index).getGiamThi().xoaPT(Integer.parseInt(scan.nextLine()));
-                            break;
-                        case 6:
-                            loop = false;
-                            break;
-                        default:
-                            System.out.println("Lua chon khong hop le!!!");
-                            break;
-                    }
-                }
                     break;
-                case 6:
+                case 6:  
                     return;
                 default:
                     System.out.println("Khong Hop le!!!!");

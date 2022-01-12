@@ -52,18 +52,11 @@ public class DSHocPhan implements DuyetDS{
         return true;
     }
     @Override
-    public boolean themPT() {
-        System.out.print("Nhap vi tri muon them: ");
-        Scanner scan = new Scanner(System.in);
-        int x = Integer.parseInt(scan.nextLine());
-        if (x > hp.length || x < 0)     return false;
-    
+    public void themPT() {
         hp = Arrays.copyOf(hp, hp.length+1);
-        for (int i = hp.length - 1; i > x; i--){
-            hp[i] = hp[i-1];
-        }
-        hp[x].capNhat();
-        return true;
+        hp[hp.length-1] = new HocPhan();
+        hp[hp.length-1].capNhat();
+      
     }
 
     @Override

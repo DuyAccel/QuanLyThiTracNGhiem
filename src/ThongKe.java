@@ -1,16 +1,16 @@
 import java.io.*;
-import java.util.Arrays;
+
 public class ThongKe implements File{
     private static int DiemTuyetDoi = 0;
     private static int NamGioi = 0;
+    private static int TongThiSinh = 0;
     private static DSHocPhan dsHocPhan = new DSHocPhan();
     private static int[] XepLoai = new int[5];
     private static int[] DanhSachDiem;
-    private static int[] DanhSachSinhVien = new int[1];
+
     ThongKe(){
 
         DanhSachDiem = new int[(dsHocPhan.hp).length];
-        DanhSachSinhVien[0] = -1;
     }
 
     public int getIndex(int MaHocPhan){
@@ -21,6 +21,7 @@ public class ThongKe implements File{
             }
             return -1;
     }
+    
     public void thongkeDiem(double Diem, int MaHP){
         if (Double.compare(Diem, 8.0) >= 0){
             if(Double.compare(Diem, 10.0) == 0){
@@ -42,48 +43,16 @@ public class ThongKe implements File{
     
     }
 
-    public void insertionSort(int[] a){
-        int i, key, j;
-        for (i = 1; i < a.length; i++){
-            key = a[i];
-            j = i - 1;
-            while (j >= 0 && a[j] > key){
-                a[j + 1] = a[j];
-                j = j - 1;
-            }
-            a[j + 1] = key;
-        }  
-    }
-
-    public boolean binarySerach(int[] a, int x){
-        int L= 0, R=a.length - 1, mid = 0;
-        
-        while (L < R){
-            if (a[(mid = (L + R)/2)] == x)
-                break;
-            if (a[mid] > x){
-                R = mid - 1;
-            }
-            else{
-                L = mid + 1;
-            }
-        }
-        if (a[mid] == x)    return true;
-        return false;
-    } 
+    
     public void thongkeNam(int MaSV, boolean GioiTinh){
-        if (binarySerach(DanhSachSinhVien, MaSV))
-            return;
-        DanhSachSinhVien = Arrays.copyOf(DanhSachSinhVien, DanhSachSinhVien.length + 1);
-        DanhSachSinhVien[DanhSachSinhVien.length-1] = MaSV;
-        insertionSort(DanhSachSinhVien);
         if (GioiTinh)       NamGioi++;
+        TongThiSinh++;
     }
 
     public double thongkeGioiTinh(){
         if (NamGioi == 0)
             return 0;
-        return 1.0*(DanhSachSinhVien.length - 1) / NamGioi;
+        return 100.0*(NamGioi) / TongThiSinh;
     }
 
     @Override
@@ -159,11 +128,11 @@ public class ThongKe implements File{
             buffer.write("So diem tuyet doi theo tung hoc phan:");
             buffer.newLine();
 
-            buffer.write("Ma hoc phan: \t Ten hoc phan\t\t So diem tuyet doi:");
+            buffer.write(String.format("%-13s|%-35s|%s","Ma hoc phan","Ten hoc phan","So diem tuyet doi"));
             buffer.newLine();
 
             for (int i = 0; i < (dsHocPhan.hp).length; i++){
-                buffer.write(dsHocPhan.hp[i].getMaHocPhan() + "\t " + dsHocPhan.hp[i].getTenHocPhan() + "\t " + DanhSachDiem[i]);
+                buffer.write(String.format("%-13d|%-35s|%d",dsHocPhan.hp[i].getMaHocPhan(), dsHocPhan.hp[i].getTenHocPhan(), DanhSachDiem[i]));
                 buffer.newLine();
             }
             
@@ -200,9 +169,9 @@ public class ThongKe implements File{
         System.out.println();
         System.out.println("Tong so con diem tuyet doi: " + DiemTuyetDoi);
         System.out.println("So diem tuyet doi theo tung hoc phan:");
-        System.out.println("Ma hoc phan: \t Ten hoc phan\t\t So diem tuyet doi:");
+        System.out.printf("%-13s|%-35s|%s\n","Ma hoc phan","Ten hoc phan","So diem tuyet doi");
         for (int i = 0; i < (dsHocPhan.hp).length; i++){
-            System.out.println(dsHocPhan.hp[i].getMaHocPhan() + "\t " + dsHocPhan.hp[i].getTenHocPhan() + "\t " + DanhSachDiem[i]);
+            System.out.printf("%-13d|%-35s|%d\n",dsHocPhan.hp[i].getMaHocPhan(), dsHocPhan.hp[i].getTenHocPhan(), DanhSachDiem[i]);
         }
     }
 }

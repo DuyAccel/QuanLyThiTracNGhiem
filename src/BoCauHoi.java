@@ -31,18 +31,11 @@ public class BoCauHoi implements DuyetDS,File{
     public void sapXep() {  
     }
     @Override
-    public boolean themPT() {
-        System.out.print("Nhap vi tri muon them: ");
-        Scanner scan = new Scanner(System.in);
-        int x = Integer.parseInt(scan.nextLine());
-        if (x > n || x < 0)     return false;
+    public void themPT() {
         n++;
         ch = Arrays.copyOf(ch, n);
-        for (int i = n - 1; i > x; i--){
-            ch[i] = ch[i-1];
-        }
-        ch[x].chinhSua();
-        return true; 
+        ch[n-1] = new CauHoi();
+        ch[n-1].chinhSua();
     }
     @Override
     public boolean xoaPT(int x) {

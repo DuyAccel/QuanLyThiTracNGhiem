@@ -26,44 +26,34 @@ public class SinhVien extends ConNguoi{
         System.out.println();
     }
     @Override
-    public void capNhat(){}
     public void capNhat(Scanner scan) {
-       
-        int n;
-        do{
-            System.out.println("Chon muc can chinh sua:");
-            System.out.println("1. Ten\n2. Maso\n3. Lop\n4. NgaySinh\n5. CamThi\n6. Gioi Tinh\n7. Thoat");
-            System.out.print("Chon: ");
-            n = Integer.parseInt(scan.nextLine());
-            switch (n){
-                case 1:
-                    System.out.print("Nhap Ten moi: ");
-                    Ten = scan.nextLine();
-                    break;
-                case 2:
-                    do{
-                        System.out.print("Nhap Maso moi: ");
-                        MaSo = Integer.parseInt(scan.nextLine());
-                    }   while(MaSo < 0);
-                    break;
-                case 3:
-                    System.out.print("Nhap Lop moi: ");
-                    Lop = scan.nextLine();
-                    break;
-                case 4:
-                    System.out.print("Nhap Ngay sinh moi: ");
-                    NgaySinh = new ThoiGian(scan.nextLine());
-                    break;
-                case 5:
-                    System.out.print("Nhap Gioi Tinh moi: ");
-                    GioiTinh = Boolean.parseBoolean(scan.nextLine());
-                case 6:
-                    System.out.print("Nhap trang thai CamThi moi: ");
-                    CamThi = Boolean.parseBoolean(scan.nextLine());
-                    break;
-                default:
-                    System.out.print("Lua chon khong hop le!");
-            }
-        }while (n!= 7);
+      
+        super.capNhat(scan);
+        
+        System.out.print("Nhap Lop moi: ");
+        Lop = scan.nextLine();
+
+        System.out.print("Nhap trang thai CamThi moi: ");
+        if (scan.nextLine().equalsIgnoreCase("co"))
+            CamThi = true;
+        else
+            CamThi = false;
+
+    }
+
+    @Override
+    public String DanhGia(int Loi) {
+        if (Loi < 0) 
+            return "Khong Xac Dinh";
+
+        switch (Loi){
+            case 0:
+                    return "Tot";
+            case 1:
+            case 2:
+                    return "Trung Binh";
+            default:
+                    return "Kem";
+        }
     }
 }

@@ -19,7 +19,12 @@ public  class DSPhongThi implements DuyetDS, File{
         return HocKy;
     }
     
+    public int getN() {
+        return n;
+    }
+    
     DSPhongThi(){}
+
     public PhongThi layPhongThi(int index){
         return pt[index];
     }
@@ -92,18 +97,12 @@ public  class DSPhongThi implements DuyetDS, File{
       }
 
      @Override
-        public boolean themPT() {
-                System.out.println("Nhập vị trí muốn thêm: ");
-                Scanner scan = new Scanner(System.in);
-                int x = Integer.parseInt(scan.nextLine());
-                if(x>n || x<0)  return false;
+        public void themPT() {
                 n++;
                 pt = Arrays.copyOf(pt, n);
-                for(int i=n-1; i>x; i-- ){
-                    pt[i] = pt[i-1];
-                }
-                pt[x].capNhat();
-                return true;    
+                pt[n-1] = new PhongThi();
+                pt[n-1].capNhat();
+              
            }
     
     @Override

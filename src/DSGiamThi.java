@@ -7,6 +7,14 @@ public class DSGiamThi implements DuyetDS, File{
     private GiamThi[] gt;
      
     DSGiamThi(){}
+    public int getN() {
+        return n;
+    }
+
+    public GiamThi layGiamThi(int index){
+        return gt[index];
+    }
+
     @Override
     public void nhapDS() {
         String Ten;
@@ -50,15 +58,12 @@ public class DSGiamThi implements DuyetDS, File{
     public void xuatDS() {
         System.out.println("Ma danh sach: " + MaSoDS);
         System.out.println("So luong Giam Thi: " + n);
-        for(int i = 0; i < n; i++){
-            System.out.println();
-            System.out.println("Giam Thi " + i);
-            System.out.println("Ten: " + gt[i].getTen());
-            System.out.println("Ma So: " + gt[i].getMaSo());
-            System.out.println("Hoc Vi: " + gt[i].getHocVi());
-            System.out.println("Ngay Sinh: " + gt[i].getNgaySinh());
-            System.out.println("Gioi Tinh: " + gt[i].getStringGioiTinh());
-            System.out.println();
+        System.out.printf("|%-10s|%-24s|%-15s|%-12s|%s\n", "Ma So", "Ten", "Hoc vi", "Ngay Sinh", "Gioi Tinh" );
+        for (int i = 0; i < 70; i++)
+            System.out.print("-");
+        System.out.println();
+        for (GiamThi s : gt) {
+            System.out.printf("|%-10s|%-24s|%-15s|%-12s|%s\n",s.getMaSo(), s.getTen(),  s.getHocVi(), s.getNgaySinh(), s.getStringGioiTinh());
         }
     }
     @Override
@@ -74,19 +79,13 @@ public class DSGiamThi implements DuyetDS, File{
         return true;
     }
     @Override
-    public boolean themPT() {return true;}
-    public boolean themPT(Scanner scan)
+    public void themPT(){}
+    public void themPT(Scanner scan)
     {
-        System.out.print("Nhap vi tri muon them: ");
-        int x = Integer.parseInt(scan.nextLine());
-        if (x > n || x < 0)     return false;
         n++;
         gt = Arrays.copyOf(gt, n);
-        for (int i = n - 1; i > x; i--){
-            gt[i] = gt[i-1];
-        }
-        gt[x].capNhat(scan);
-        return true;
+        gt[n-1] = new GiamThi();
+        gt[n-1].capNhat(scan);
     }
     @Override
     public void timKiem(){
@@ -154,11 +153,11 @@ public class DSGiamThi implements DuyetDS, File{
             buffer.newLine();
             buffer.write("So luong Giam Thi: " + n);
             buffer.newLine();
-            
+            buffer.write(String.format("|%-10s|%-24s|%-15s|%-12s|%s", "Ma So", "Ten", "Hoc vi", "Ngay Sinh", "Gioi Tinh" ));
             buffer.newLine();
             for (GiamThi s : gt) {
-                buffer.write(s.getMaSo()+ "\t\t\t" +s.getTen() + "\t\t\t\t\t" 
-                            + s.getHocVi() + "\t\t\t" + s.getNgaySinh() + "\t\t\t" + s.getStringGioiTinh());
+                buffer.write(String.format("|%-10s|%-24s|%-15s|%-12s|%s", s.getMaSo(), s.getTen(),
+                            s.getHocVi(), s.getNgaySinh(), s.getStringGioiTinh()));
                 buffer.newLine();
             }
             buffer.close();

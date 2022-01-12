@@ -8,6 +8,7 @@ public  class HocPhan {
     protected int TinChi;
     protected int SoCau;
     
+    HocPhan(){}
     public HocPhan(int MaHocPhan, String TenHocPhan, int TinChi, int SoCauHoi){
         this.MaHocPhan = MaHocPhan;
         this.TenHocPhan = TenHocPhan;

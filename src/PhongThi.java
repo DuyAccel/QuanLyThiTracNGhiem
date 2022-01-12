@@ -10,8 +10,9 @@ public class PhongThi {
     private DSGiamThi GiamThi = new DSGiamThi();
     private DSSinhVien SinhVien = new DSSinhVien();
     private BienBanThi BienBan = new BienBanThi();
-            
-       public PhongThi(int MaPhong, String TenFileSinhVien, String TenFileGiamThi, String TenFileBienBan){
+    
+        PhongThi(){}
+        PhongThi(int MaPhong, String TenFileSinhVien, String TenFileGiamThi, String TenFileBienBan){
             this.MaPhong = MaPhong;
             this.TenFileGiamThi = TenFileGiamThi;
             this.TenFileSinhVien = TenFileSinhVien;
@@ -52,18 +53,18 @@ public class PhongThi {
             SinhVien.sapXep();
             GiamThi.sapXep();
         }
-
+    
         public void capNhat() {
        Scanner scan = new Scanner(System.in);
        int n;
        do{
-           System.out.println("vui long chọn mục can chinh sua");
-           System.out.println("1. MaHocPhan \n2.Ten File Giam Thi \n3.Ten File Sinh Vien \n4. Ten File Bien Ban" );
+           System.out.println("Vui long Chon muc can chinh sua");
+           System.out.println("1. Ma Phong Thi \n2. Ten File Giam Thi \n3. Ten File Sinh Vien \n4. Ten File Bien Ban\n5. Thoat" );
            System.out.println("chon: ");
            n = Integer.parseInt(scan.nextLine());
            switch(n){
                 case 1:
-                   System.out.println("Nhập Ma Phong moi: ");
+                   System.out.println("Nhap Ma Phong moi: ");
                    MaPhong = Integer.parseInt(scan.nextLine());
                    break;    
                 case 2:
@@ -77,6 +78,8 @@ public class PhongThi {
                 case 4:
                     System.out.println("Nhap Ten File Bien Ban moi: ");
                     TenFileBienBan = scan.nextLine();
+                case 5:
+                    return;
            }
        }while (n!=4);
     }    
@@ -89,6 +92,7 @@ public class PhongThi {
         System.out.println();
         System.out.println("Danh Sach Giam thi:");
         GiamThi.xuatDS();
+        SinhVien.ghiFile("SinhVien.txt");
     }
 
 }
